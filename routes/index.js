@@ -37,7 +37,7 @@ exports.tycrawler_result = function(req, res){
         }
     };
 
-    // write comments info into a file
+    // parse comments info into a string 
     var comments_info_tostring = function(ci) {
         var result = '\nFloor';
         for(var i = 0; i < ci.length; i++) {
@@ -76,7 +76,7 @@ exports.tycrawler_result = function(req, res){
         console.log(main_author);
 
         for(var i = 1; i <= last_page_num; i++){
-            var url = init_url.substring(0, init_url.length-7) + i + '.shtml';
+            var url = init_url.substring(0, 37) + i + '.shtml';
             console.log(url);
             pages.push(url);
         }

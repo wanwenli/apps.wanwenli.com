@@ -1,8 +1,8 @@
 p Welcome to #{title}
 form(method='post', action='/tycrawler')
-    legend Please enter a URL
     p
-        input(name='url')
+        input(name='url', placeholder='Please enter a URL')
     p
         input(type='submit', value='Start')
+        input(type='reset', value='Reset')
 

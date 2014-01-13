@@ -8,6 +8,5 @@
 	, "cheerio": "*"
 	, "async": "*"
 	, "request": "*"
-	, "util": "*"
   }
 }

@@ -81,11 +81,8 @@ exports.tycrawler_result = function(req, res){
                 var page_title = $("#post_head span.s_title span").html();
                 // get the author of the main post
                 var main_author = $("#post_head .atl-info a").html();
-                // get the content of the main post
-                var main_post = $(".bbs-content.clearfix").html().trim();
                 console.log(page_title);
                 console.log(main_author);
-                console.log(main_post);
 
                 // get content of each post on the page
                 var first_post = parseInt($("div.atl-item").first().attr('id'));
@@ -118,7 +115,6 @@ exports.tycrawler_result = function(req, res){
 
                 var str = 'Page title' + delimiter + page_title;
                 str = str + '\nMain author' + delimiter + main_author;
-                str = str + '\nMain post' + delimiter + main_post;
                 str = str + comments_info_tostring(comments_info);
                 res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
                 res.end(str);

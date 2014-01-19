@@ -12,15 +12,25 @@ html
                         a(href="/")
                             h1 #{title}
                         h2 #{subtitle}
+                nav
+                    div#menu_container
+                        ul#nav.sf-menu
+                            li
+                                a(href="/") Home
+                            li
+                                a(href="http://wanwenli.com") Salmon Blog
+                        
                 a(href="https://github.com/swwl1992/TyCrawler")
-                    img(style="position: absolute; top: 0; left: 0; border: 0;",
+                    img(style="position:absolute; top:0; left:0; border:0;",
                         src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
                         alt="Fork me on GitHub")
             div#site_content
                 div#sidebar_container
                 div.content!= body
             footer
-                p &copy; 2014 &nbsp;
-                    a(href="https://plus.google.com/104922911598414075400?rel=author") Simon Wan Wenli
-                p Copyright &copy; CSS_two | &nbsp;
-                    a(href="http://www.css3templates.co.uk") design from css3templates.co.uk
+                p
+                    a(href="/") Home |&nbsp;
+                    a(href="http://wanwenli.com") Salmon Blog
+                p Copyright &copy; 2014 &nbsp;
+                    a(href="https://plus.google.com/104922911598414075400?rel=author") Simon Wan Wenli |&nbsp;
+                    a(href="http://www.css3templates.co.uk") Design from css3templates.co.uk

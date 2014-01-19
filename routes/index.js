@@ -8,8 +8,8 @@ exports.index = function(req, res){
 
 exports.tycrawler = function(req, res){
     res.render('tycrawler', {
-        title: 'Tianya Crawler',
-        subtitle: 'A web gagdet for Tianya BBS'
+        title: 'Salmon Apps',
+        subtitle: 'Tianya Crawler'
     });
 };
 

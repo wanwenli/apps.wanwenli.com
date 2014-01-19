@@ -70,13 +70,13 @@ h5, h6 {
   padding: 0 0 15px 0;
 }
 
-a, a:hover { 
+a, a:hover {
   outline: none;
   text-decoration: none;
   color: #ff6138;
 }
 
-a:hover { 
+a:hover {
   text-decoration: none;
 }
 
@@ -333,7 +333,7 @@ footer a:hover {
   font: 100% arial; 
   border: 0; 
   width: 99px; 
-  margin: 0 0 0 20px; 
+  margin: 10px 0 10px 0; 
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
@@ -348,7 +348,7 @@ footer a:hover {
   font: 100% arial; 
   border: 0; 
   width: 99px; 
-  margin: 0 0 0 20px; 
+  margin: 10px 0 10px 20px; 
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 

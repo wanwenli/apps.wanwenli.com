@@ -1,8 +1,8 @@
-p Welcome to #{title}
 form(method='post', action='/tycrawler')
-    p
-        input(name='url', placeholder='Please enter a URL')
-    p
-        input(type='submit', value='Start')
-        input(type='reset', value='Reset')
-
+    div.form_settings
+        p
+            input(name='url', placeholder='Please enter a URL')
+            input.submit(type='submit', value='Start')
+            input.reset(type='reset', value='Reset')
+h5 Report a bug? Please Click&nbsp;
+    a(href="https://github.com/swwl1992/TyCrawler/issues") here

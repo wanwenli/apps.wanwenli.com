@@ -3,11 +3,14 @@
  */
 
 exports.index = function(req, res){
-    res.render('index', { title: 'Apps by Wan Wenli' })
+    res.render('index', { title: 'Salmon Apps', subtitle: "Let's go fishing"})
 };
 
 exports.tycrawler = function(req, res){
-    res.render('tycrawler', {title: 'Tianya Crawler'});
+    res.render('tycrawler', {
+        title: 'Tianya Crawler',
+        subtitle: 'A web gagdet for Tianya BBS'
+    });
 };
 
 exports.tycrawler_result = function(req, res){

@@ -1,6 +1,26 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel="icon" href="/images/favicon.ico")
+    body
+        div#main
+            header
+                div#logo
+                    div#logo_text
+                        a(href="/")
+                            h1 #{title}
+                        h2 #{subtitle}
+                a(href="https://github.com/swwl1992/TyCrawler")
+                    img(style="position: absolute; top: 0; left: 0; border: 0;",
+                        src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
+                        alt="Fork me on GitHub")
+            div#site_content
+                div#sidebar_container
+                div.content!= body
+            footer
+                p &copy; 2014 &nbsp;
+                    a(href="https://plus.google.com/104922911598414075400?rel=author") Simon Wan Wenli
+                p Copyright &copy; CSS_two | &nbsp;
+                    a(href="http://www.css3templates.co.uk") design from css3templates.co.uk

@@ -26,7 +26,7 @@ exports.zodiac_result = function(req, res) {
     , async = require('async')
     , cheerio = require('cheerio');
 
-    var base_url = 'http://www.google.com/search?q=';
+    var base_url = 'http://www.baidu.com/s?word=';
     var option = req.body.option;
     var zodiac = [
           '白羊'
@@ -59,9 +59,9 @@ exports.zodiac_result = function(req, res) {
                     throw err;
                 }
                 var $ = cheerio.load(body);
-                var result = $("#resultStats").html();
+                var result = $(".nums").html();
                 // parse the string to an integer
-                var num = parseInt(result.split(' ')[1].split(',').join(''));
+                var num = parseInt(result.substr(11,result.length-2).split(',').join(''));
                 result_json.results.push({
                     zodiac: zod + zuo,
                     stats: num

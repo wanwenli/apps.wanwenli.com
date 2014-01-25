@@ -13,6 +13,70 @@ exports.tycrawler = function(req, res){
     });
 };
 
+exports.zodiac = function(req, res) {
+    res.render('zodiac', {
+        title: 'Salmon Apps',
+        subtitle: 'Zodiac'
+    });
+};
+
+exports.zodiac_result = function(req, res) {
+    var request = require('request')
+    , fs = require('fs')
+    , async = require('async')
+    , cheerio = require('cheerio');
+
+    var base_url = 'http://www.google.com/search?q=';
+    var option = req.body.option;
+    var zodiac = [
+          '白羊'
+        , '金牛'
+        , '双子'
+        , '巨蟹'
+        , '狮子'
+        , '处女'
+        , '天秤'
+        , '天蝎'
+        , '射手'
+        , '摩羯'
+        , '水瓶'
+        , '双鱼'
+    ];
+    var zuo = '座';
+    var concurrency = 12;
+    var result_json = {
+        title: "Salmon Apps",
+        subtitle: "Zodiac",
+        option: option,
+        results: []
+    };
+
+    try {
+        async.eachLimit(zodiac, concurrency, function (zod, next) {
+            var search_url = base_url + option + zod + zuo;
+            request(search_url, function(err, response, body){
+                if(err) {
+                    throw err;
+                }
+                var $ = cheerio.load(body);
+                var result = $("#resultStats").html();
+                // parse the string to an integer
+                var num = parseInt(result.split(' ')[1].split(',').join(''));
+                result_json.results.push({
+                    zodiac: zod + zuo,
+                    stats: num
+                });
+                // when response is ready
+                if(result_json.results.length == 12) {
+                    res.render('zodiac_result_display', result_json);
+                }
+            });
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
+
 exports.tycrawler_result = function(req, res){
     var request = require('request')
     , fs = require('fs')

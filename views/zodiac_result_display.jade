@@ -1,0 +1,31 @@
+script(src="/javascripts/Chart.min.js")
+h1 #{option}XX座
+canvas(id="myChart",
+        style="border:1px solid #666;"
+        width="700px", height="350px")
+
+script(type='text/javascript').
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var results = !{JSON.stringify(results)};
+    var x_axis = [];
+    var counts = [];
+    for(var i = 0; i < results.length; i++) {
+        var result = results[i];
+        x_axis.push(result.zodiac);
+        counts.push(result.stats);
+    }
+    var data = {
+        labels : x_axis,
+        datasets : [
+            {
+                data : counts
+            }
+        ]
+    };
+    var options = {
+        scaleFontSize : 14
+    };
+    var chart = new Chart(ctx).Bar(data, options);
+
+h5 Report a bug? Please Click&nbsp;
+    a(href="https://github.com/swwl1992/TyCrawler/issues") here

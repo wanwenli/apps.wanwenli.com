@@ -129,6 +129,9 @@ ol li {
   margin-right: auto;
 }
 
+html, body, #site_content { height: 100%; }
+body #site_content { height: auto; min-height: 50%; }
+
 #main {
   height:100%;
 }
@@ -275,8 +278,6 @@ nav {
 }
 
 footer { 
-  position:absolute;
-  bottom:0;
   width: 100%;
   font-family: 'lucida sans', sans-serif;
   font-size: 90%;

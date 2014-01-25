@@ -31,7 +31,9 @@ app.configure('production', function(){
 
 app.get('/', routes.index);
 app.get('/tycrawler', routes.tycrawler);
+app.get('/zodiac', routes.zodiac);
 app.post('/tycrawler', routes.tycrawler_result);
+app.post('/zodiac', routes.zodiac_result);
 
 app.listen(port, function(){
     console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

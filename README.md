@@ -1,5 +1,5 @@
 Tianya Crawler
 ======
 
-A toy project to practice using node.js.
-A web crawler to retrieve info from posts on [tianya BBS](http://bbs.tianya.cn).
+A toy web application to practice using node.js.
+Inside there are 2 major web applications.

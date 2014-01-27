@@ -130,7 +130,7 @@ ol li {
 }
 
 html, body, #site_content { height: 100%; }
-body #site_content { height: auto; min-height: 50%; }
+body #site_content { height: auto; min-height: 75%; }
 
 #main {
   height:100%;

@@ -3,7 +3,8 @@
  */
 
 var express = require('express')
-    , routes = require('./routes');
+    , routes = require('./routes')
+	, zhihu = require('./routes/zhihu');
 
 var app = module.exports = express.createServer();
 var port = process.env.PORT || 5000;
@@ -32,6 +33,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/tycrawler', routes.tycrawler);
 app.get('/zodiac', routes.zodiac);
+app.get('/zhihu-api/users/:uid', zhihu.userapi);
 app.post('/tycrawler', routes.tycrawler_result);
 app.post('/zodiac', routes.zodiac_result);
 

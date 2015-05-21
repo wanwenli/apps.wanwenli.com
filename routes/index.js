@@ -59,7 +59,7 @@ exports.zodiac_result = function(req, res) {
                     throw err;
                 }
                 var $ = cheerio.load(body);
-                var result = $(".nums").html();
+                var result = $("div.nums").html();
                 // parse the string to an integer
                 var num = parseInt(result.substr(11,result.length-2).split(',').join(''));
                 result_json.results.push({

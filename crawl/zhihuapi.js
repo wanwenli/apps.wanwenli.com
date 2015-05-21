@@ -5,6 +5,10 @@ function ZhihuApi () {
 	this.PEOPLE = '/people/';
 	this.FOLLOWER_REL_PATH = '/followers';
 	this.FOLLOWEE_REL_PATH = '/followees';
+	this.USER_NOT_FOUND_OBJ = {
+		message : "Not found",
+		documentation_url : "https://github.com/swwl1992/apps.wanwenli.com"
+	};
 }
 
 ZhihuApi.prototype.user = function(uid, callback) {
@@ -14,18 +18,25 @@ ZhihuApi.prototype.user = function(uid, callback) {
 	var peopleUrl = this.PEOPLE;
 	var followerRelUrl = peopleUrl + uid + this.FOLLOWER_REL_PATH;
 	var followeeRelUrl = peopleUrl + uid + this.FOLLOWEE_REL_PATH;
+	var userNotFoundObj = this.USER_NOT_FOUND_OBJ;
 	
 	this.request(url, function(err, response, body) {
 		var $ = cheerio.load(body);
-		var user =  {
-			id : uid,
-			url : url,
-			followers : parseInt($('a.item[href="' + followerRelUrl + '"] strong').html(), 10),
-			followees : parseInt($('a.item[href="' + followeeRelUrl + '"] strong').html(), 10),
-			agree : parseInt($('span.zm-profile-header-user-agree strong').html(), 10),
-			thanks : parseInt($('span.zm-profile-header-user-thanks strong').html(), 10)
-		};
-		callback(user);
+		var resObj = {};
+		if ($('div.error').length === 0) {
+			// 404 not found
+			resObj =  {
+				id : uid,
+				url : url,
+				followers : parseInt($('a.item[href="' + followerRelUrl + '"] strong').html(), 10),
+				followees : parseInt($('a.item[href="' + followeeRelUrl + '"] strong').html(), 10),
+				agree : parseInt($('span.zm-profile-header-user-agree strong').html(), 10),
+				thanks : parseInt($('span.zm-profile-header-user-thanks strong').html(), 10)
+			};
+		} else {
+			resObj = userNotFoundObj;
+		}
+		callback(resObj);
 	});
 };
 

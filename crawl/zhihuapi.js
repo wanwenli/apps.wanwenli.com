@@ -11,7 +11,7 @@ function ZhihuApi () {
 	};
 }
 
-ZhihuApi.prototype.user = function(uid, callback) {
+ZhihuApi.prototype.user = function(uid, jsCbName, callback) {
 	var url = this.BASE_URL + this.PEOPLE + uid;
 	var cheerio = this.cheerio;
 	var baseUrl = this.BASE_URL;
@@ -24,7 +24,6 @@ ZhihuApi.prototype.user = function(uid, callback) {
 		var $ = cheerio.load(body);
 		var resObj = {};
 		if ($('div.error').length === 0) {
-			// 404 not found
 			resObj =  {
 				id : uid,
 				url : url,
@@ -34,9 +33,14 @@ ZhihuApi.prototype.user = function(uid, callback) {
 				thanks : parseInt($('span.zm-profile-header-user-thanks strong').html(), 10)
 			};
 		} else {
+			// 404 not found
 			resObj = userNotFoundObj;
 		}
-		callback(resObj);
+		var resStr = JSON.stringify(resObj);
+		if (typeof jsCbName != 'undefined') {
+			resStr = jsCbName + '(' + resStr + ')';
+		}
+		callback(resStr);
 	});
 };
 

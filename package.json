@@ -6,7 +6,7 @@
   , "dependencies": {
       "express": "2.5.8"
     , "jade": ">= 0.0.1"
-	, "cheerio": "*"
+	, "cheerio": "0.14.0"
 	, "async": "*"
 	, "request": "*"
   }

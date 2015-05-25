@@ -27,6 +27,7 @@ ZhihuApi.prototype.user = function(uid, jsCbName, callback) {
 			resObj =  {
 				id : uid,
 				url : url,
+				name : $('div.title-section span.name').html(),
 				followers : parseInt($('a.item[href="' + followerRelUrl + '"] strong').html(), 10),
 				followees : parseInt($('a.item[href="' + followeeRelUrl + '"] strong').html(), 10),
 				agree : parseInt($('span.zm-profile-header-user-agree strong').html(), 10),

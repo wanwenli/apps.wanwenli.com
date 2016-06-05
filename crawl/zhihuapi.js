@@ -19,13 +19,14 @@ ZhihuApi.prototype.user = function(uid, jsCbName, callback) {
 	this.request(url, function(err, response, body) {
 		if (!err && response.statusCode == 200) {
 			var $ = cheerio.load(body);
+            console.log(body);
 			var resObj = {};
 			if ($('div.error').length === 0) {
 				var id = $('a.zm-profile-header-user-detail').attr('href').split('/')[2];
 				resObj =  {
 					id : id,
 					url : baseUrl + peopleUrl + id,
-					avatar_url : $('img.Avatar')[0].src,
+					avatar_url : $('img.zm-item-img-avatar').attr('src'),
 					name : $('div.title-section span.name').html(),
 					followees : parseInt($('div.zm-profile-side-following a:nth-child(1) strong').html(), 10),
 					followers : parseInt($('div.zm-profile-side-following a:nth-child(2) strong').html(), 10),
